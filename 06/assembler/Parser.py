@@ -42,8 +42,12 @@ class Parser:
                 line = line.replace(' ', '')
                 line = line.replace('\t', '')
 
-                # If the line was only whitespace to begin with it will now 
-                # have zero length and be ignored 
+                # Remove comments
+                split_comments = line.split('//')
+                line = split_comments[0]
+
+                # Empty lines or lines with just comments will now be of zero
+                # length and will be ignored
                 if len(line) > 0:
                     code.append(line)
 
