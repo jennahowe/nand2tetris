@@ -93,7 +93,10 @@ class Parser:
 
     def symbol(self):
         """Return the symbol for an A- or L-instruction."""
-
+        if self.current_command[0] == '@':
+            return self.current_command[1:]
+        else:
+            return self.current_command[1:-1]
 
 
 
