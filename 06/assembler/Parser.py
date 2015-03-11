@@ -38,6 +38,9 @@ class Parser:
 
     def c_instr_parts(self):
         """Return the specified part of self.current_command."""
+        # C-commands are in the format 'dest=comp;jump', where either dest or 
+        # jump must be null. So there are 2 types of commands: 'dest=comp' and
+        # 'comp;jump'.
         split_equals = self.current_command.split('=')
         split_semicolon = self.current_command.split(';')
 
