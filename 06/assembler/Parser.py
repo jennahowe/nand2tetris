@@ -88,7 +88,7 @@ class Parser:
 
             return (dest, comp, jump) 
         else:
-            print("Oh dear")
+            print("Oh dear, something has gone wrong with c_instr_parts")
 
 
     def symbol(self):
