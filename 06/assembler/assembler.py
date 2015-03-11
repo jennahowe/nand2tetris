@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 import Parser as par
 import Codes as c
-import pdb
 import argparse
 
 arg_parser= argparse.ArgumentParser(description = "")
@@ -14,6 +13,7 @@ args = arg_parser.parse_args()
 
 p = par.Parser(args.filepath)
 codes = c.Codes()
+new_filepath = args.filepath[:-4] + '.hack'
 
 for i, line in enumerate(p.code):
     p.set_current_command(i)
@@ -38,7 +38,7 @@ for i, line in enumerate(p.code):
         machine_code = ('%s%s%s%s' % (instr_code, comp_code, dest_code, 
                                       jump_code))
 
-        with open('test.hack', 'a') as hack:
+        with open(new_filepath, 'a') as hack:
             hack.write(machine_code + '\n')
 
     elif command_type == 'L_COMMAND' or command_type == 'A_COMMAND':
@@ -53,8 +53,7 @@ for i, line in enumerate(p.code):
 
         machine_code = instr_code + symbol_code
 
-        gen_filepath = args.filepath[:-4] + '.hack'
-        with open(gen_filename, 'a') as hack:
+        with open(new_filepath, 'a') as hack:
             hack.write(machine_code + '\n')
     else:
         print('If this prints then something weird is happening')
