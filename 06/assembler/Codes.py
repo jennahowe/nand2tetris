@@ -1,5 +1,5 @@
 class Codes:
-    """Translates Hack assembly language mnemonics in binary code."""
+    """Translate Hack assembly language mnemonics in binary code."""
     def __init__(self):
         self.dest_codes = {'null': '000',
                            'M': '001',
@@ -29,7 +29,7 @@ class Codes:
                            'D&A': '0000000',
                            'D|A': '0010101',
                            'M': '1110000',
-                           '!M': '1110011',
+                           '!M': '1110001',
                            '-M': '1110011',
                            'M+1': '1110111',
                            'M-1': '1110010',
