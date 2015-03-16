@@ -1,9 +1,18 @@
+from check_table import check_table
+from SymbolTable import SymbolTable
+import pdb
+
 class Parser:
     """Parse an assembly program"""
     def __init__(self, assembly_file):
         """Open filestream for assembly file and prepare to parse it."""
+        self.symbol_table = SymbolTable()
+
         with open(assembly_file, 'r') as raw_code:
             code = []
+
+            addr = 0
+            #pdb.set_trace()
             for line in raw_code:
                 # Strip whitespace
                 line = line.strip('\n\r')
@@ -17,7 +26,15 @@ class Parser:
                 # Empty lines or lines with just comments will now be of zero
                 # length and will be ignored
                 if len(line) > 0:
+                    # Check for and store user-defined symbols
+                    check_table(self.symbol_table, line, addr)
+                    
                     code.append(line)
+
+                    # Only increment address if line is not a label; labels 
+                    # don't produce instructions
+                    if line[0] != '(':
+                        addr += 1
 
             self.code = code
 

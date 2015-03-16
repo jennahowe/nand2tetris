@@ -1,5 +1,5 @@
 class SymbolTable:
-    """Store and access user-defined symbols in an assembly program."""
+    """Store and access user- and pre-defined symbols for an assembly program."""
     def __init__(self):
         self.symbol_table = {'SP': 0,
                              'LCL': 1,
@@ -25,3 +25,16 @@ class SymbolTable:
                              'SCREEN': 16384,
                              'KBD': 24576
                             }
+
+    def add_entry(self, symbol, address):
+        self.symbol_table[symbol] = address
+
+    def contains(self, symbol):
+        if symbol in self.symbol_table:
+            return True
+        else:
+            return False
+
+    def get_address(self, symbol):
+        address = self.symbol_table[symbol]
+        return address
