@@ -52,3 +52,7 @@ docs/_build/
 
 # PyBuilder
 target/
+
+# Machine code and Assembly files
+*.asm
+*.hack
