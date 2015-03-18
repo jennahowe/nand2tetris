@@ -1,11 +1,11 @@
 #!/usr/bin/env python
+
 import Parser as par
 import Codes as c
 import argparse
 from check_table import check_table
-import pdb
 
-arg_parser= argparse.ArgumentParser(description = "")
+arg_parser = argparse.ArgumentParser(description = "")
 
 arg_parser.add_argument('filename',
                         help = 'name of file to use',

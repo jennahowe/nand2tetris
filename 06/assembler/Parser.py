@@ -1,6 +1,5 @@
 from check_table import check_table
 from SymbolTable import SymbolTable
-import pdb
 
 class Parser:
     """Parse an assembly program"""
@@ -10,9 +9,8 @@ class Parser:
 
         with open(assembly_file, 'r') as raw_code:
             code = []
-
             addr = 0
-            #pdb.set_trace()
+            
             for line in raw_code:
                 # Strip whitespace
                 line = line.strip('\n\r')
